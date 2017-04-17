@@ -1,5 +1,5 @@
 // Data goes here.
-
+var initialData = null;
 
 var data;
 // If 'true', the in-memory object representing the database has changed,
