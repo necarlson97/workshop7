@@ -4,9 +4,6 @@ var express = require('express');
 var app = express();
 // Parses response bodies.
 var bodyParser = require('body-parser');
-var database = require('./database');
-var readDocument = database.readDocument;
-var writeDocument = database.writeDocument;
 
 var StatusUpdateSchema = require('./schemas/statusupdate.json');
 var CommentSchema = require('./schemas/comment.json');
@@ -614,7 +611,7 @@ MongoClient.connect(url, function(err, db) {
       var feedItemId = new ObjectID(req.params.feeditemid);
       var userId = req.params.userid;
       var commentIdx = parseInt(req.params.commentindex, 10);
-      
+
       if (fromUser === userId) {
         db.collection('feedItems').updateOne({ _id: feedItemId},
           {
